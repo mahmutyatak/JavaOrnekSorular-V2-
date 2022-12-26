@@ -50,50 +50,89 @@ Sifre değiştirme işleminde mevcut şifreyi teyit ettikten sonra,
     }public static void menu(List<String> islemler){
         Scanner scan=new Scanner(System.in);
 
-        System.out.println("Yapmak istediginiz islemi giriniz");
+        System.out.println("Yapmak istediginiz islemi giriniz"+"\n-------MENU-------");
         for (int i = 0; i <islemler.size() ; i++) {
             System.out.println(islemler.get(i)+" ");
         }
         int islem=scan.nextInt();
         if (islem==1){
             System.out.println("bakiyeniz :"+bakiye);
-         menu(islemler);
+            System.out.println(" devam etmek istiyormusunuz?  E/H");
+            char secim=scan.next().charAt(0);
+
+            if (secim=='e' || secim=='E'){
+                menu(islemler);
+            }else
+                System.out.println("İYİ GUNLER");
+
         } else if (islem==2) {
             System.out.println("yatırmak istediğiniz tutarı giriniz");
             int tutar=scan.nextInt();
             bakiye+=tutar;
             System.out.println("bakiyeniz :"+bakiye);
-            menu(islemler);
+            System.out.println(" devam etmek istiyormusunuz?  E/H");
+            char secim=scan.next().charAt(0);
+
+            if (secim=='e' || secim=='E'){
+                menu(islemler);
+            }else
+                System.out.println("İYİ GUNLER");
         } else if (islem==3) {
             System.out.println("cekmek istediğiniz tutarı giriniz");
             int cekme=scan.nextInt();
             if (cekme>bakiye){
                 System.out.println("bakiye yetersiz");
-                menu(islemler);
+                System.out.println(" devam etmek istiyormusunuz?  E/H");
+                char secim=scan.next().charAt(0);
+
+                if (secim=='e' || secim=='E'){
+                    menu(islemler);
+                }else
+                    System.out.println("İYİ GUNLER");
             }else {
                 bakiye-=cekme;
                 System.out.println("bakiyeniz :"+bakiye);
-                menu(islemler);
+                System.out.println(" devam etmek istiyormusunuz?  E/H");
+                char secim=scan.next().charAt(0);
+
+                if (secim=='e' || secim=='E'){
+                    menu(islemler);
+                }else
+                    System.out.println("İYİ GUNLER");
             }
 
         } else if (islem==4) {
-            System.out.println("göndermek istediğiniz kisinin ibanını giriniz");
-           String iban=scan.next();
 
+            System.out.println("göndermek istediğiniz kisinin ibanını giriniz");
+            String iban=scan.next();
             if (!(iban.startsWith("TR") && iban.length()==26)){
                 System.out.println("hatalı iban");
                 menu(islemler);
-            }
-            System.out.println("göndermek istediginiz tutarı giriniz");
-            int gonder=scan.nextInt();
-            if (gonder>bakiye){
-                System.out.println("yetersiz bakiye");
-                menu(islemler);
             }else {
-                bakiye-=gonder;
-                System.out.println("bakiyeniz :"+bakiye);
-                menu(islemler);
+            System.out.println("göndermek istediginiz tutarı giriniz");
+            int gonder = scan.nextInt();
+            if (gonder > bakiye) {
+                System.out.println("yetersiz bakiye");
+                System.out.println(" devam etmek istiyormusunuz?  E/H");
+                char secim=scan.next().charAt(0);
+
+                if (secim=='e' || secim=='E'){
+                    menu(islemler);
+                }else
+                    System.out.println("İYİ GUNLER");
+
+            } else {
+                bakiye -= gonder;
+                System.out.println("bakiyeniz :" + bakiye);
+                System.out.println(" devam etmek istiyormusunuz?  E/H");
+                char secim=scan.next().charAt(0);
+
+                if (secim=='e' || secim=='E'){
+                    menu(islemler);
+                }else
+                    System.out.println("İYİ GUNLER");
             }
+        }
 
         } else if (islem==5) {
             int eskisifre=0;
@@ -105,7 +144,13 @@ Sifre değiştirme işleminde mevcut şifreyi teyit ettikten sonra,
             int yenisisfre=scan.nextInt();
             sifre=yenisisfre;
             System.out.println("sifre degistirme basarili");
-            menu(islemler);
+            System.out.println(" devam etmek istiyormusunuz?  E/H");
+            char secim=scan.next().charAt(0);
+
+            if (secim=='e' || secim=='E'){
+                menu(islemler);
+            }else
+                System.out.println("İYİ GUNLER");
         } else if (islem==6) {
             System.out.println("iyi gunler");
         }
