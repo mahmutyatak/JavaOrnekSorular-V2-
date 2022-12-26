@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class c18_soru {
-   static String sifre="123.abc";
+   static int sifre=1234;
   static   int bakiye=500;
     public static void main(String[] args) {
         /*
@@ -34,10 +34,10 @@ Sifre değiştirme işleminde mevcut şifreyi teyit ettikten sonra,
             kartno=kartno.replaceAll("\\D","");
 
         } System.out.println("sifrenizi giriniz");
-        sifre=scan.nextLine();
-        while (!sifre.equals("123.abc")){
+        sifre=scan.nextInt();
+        while (sifre!=1234){
             System.out.println("sifrenizi giriniz");
-            sifre=scan.nextLine();
+            sifre=scan.nextInt();
         }
         List<String> islemler=new ArrayList<>(Arrays.asList("1-Bakiye Sorgula","2-Para Yatırma","3-Para Cekme","4-Para Gonderme",
                 "5-Sifre Degistirme","6-Cıkıs"));
@@ -96,13 +96,13 @@ Sifre değiştirme işleminde mevcut şifreyi teyit ettikten sonra,
             }
 
         } else if (islem==5) {
-            String eskisifre="";
-            while (!eskisifre.equals(sifre)){
+            int eskisifre=0;
+            while (eskisifre!=sifre){
                 System.out.println("eski sifreniz");
-                eskisifre=scan.next();
+                eskisifre=scan.nextInt();
             }
             System.out.println("yeni sifreniz");
-            String yenisisfre=scan.next();
+            int yenisisfre=scan.nextInt();
             sifre=yenisisfre;
             System.out.println("sifre degistirme basarili");
             menu(islemler);
