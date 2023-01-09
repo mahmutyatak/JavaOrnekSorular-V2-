@@ -129,8 +129,7 @@ public class Menu {
         }
         if (!kontrol){
             System.out.println("girilen tc no hatalı");
-            tcnoKontrol(scan.next());
-           // menu();
+           islemler();
         }
         return tcno;
     }
