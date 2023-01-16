@@ -48,6 +48,7 @@ public class Menu {
             if (islem.equalsIgnoreCase("q")){
                 System.out.println("------sistemden cıkılıyor.------");
                 System.exit(0);//BREAK LA AYNI
+
             }else {
                 System.out.println("hatalı giriş yapıldı ");
                 islemler();
