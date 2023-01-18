@@ -18,7 +18,8 @@ Scanner scan=new Scanner(System.in);
             switch (secim){
                 case 1:{
                     OgrenciIslemler ogrenciMenu=new OgrenciIslemler();
-
+                    ogrenciMenu.ogrenciMenu();
+                    break;
 
                 } case 2:{
                     OgretmenIslemler ogretmenMenu=new OgretmenIslemler();

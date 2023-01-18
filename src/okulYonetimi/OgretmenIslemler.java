@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class OgretmenIslemler implements Islemler {
 Scanner scan=new Scanner(System.in);
 static int sicilNo=1000;
-ArrayList<Ogretmen> ogretmenlist=new ArrayList<>();
+static ArrayList<Ogretmen> ogretmenlist=new ArrayList<>();
 void ogrtMenu(){
     System.out.println("============= İŞLEMLER =============\n" +
             "\t\t 1-EKLEME\n" +
@@ -77,6 +77,7 @@ void ogrtMenu(){
         Ogretmen ogretmen=new Ogretmen(ad,soyad,tcNO,yas,bolum,sicilNo++);
         ogretmenlist.add(ogretmen);
         System.out.println(ogretmenlist);
+        ogrtMenu();
 
 
     }
@@ -100,16 +101,53 @@ void ogrtMenu(){
 
     @Override
     public void arama() {
+        System.out.println("aranacak kisinin tc no sunu giriniz");
+        String tcNo=scan.next();
+        boolean kontrol=true;
+        for (Ogretmen each:ogretmenlist
+             ) {
+            if (each.getTcNo().equals(tcNo)){
+                System.out.println(each);
+                kontrol=false;
 
+            }
+        }
+        if (kontrol){
+            System.out.println(tcNo+" boyle bir tc nolu kişi yok");
+
+        }
+        ogrtMenu();
     }
 
     @Override
     public void listeleme() {
-
+        for (Ogretmen each:ogretmenlist
+             ) {
+            System.out.println(each);
+        }
+        ogrtMenu();
     }
 
     @Override
     public void silme() {
+    scan.nextLine();
+        System.out.println("silinecek kisinin tc no sunu giriniz");
+        String tcno=scan.nextLine();
+        boolean kontrol=false;
+        for (int i = 0; i <ogretmenlist.size() ; i++) {
+            if (ogretmenlist.get(i).getTcNo().equals(tcno)){
+                System.out.println("silinecek eleman"+ogretmenlist.get(i));
+                ogretmenlist.remove(i);
+                kontrol=true;
+                ogrtMenu();
+        }
+
+            }
+
+        if (!kontrol){
+            System.out.println("böyle bir tc yok");
+            ogrtMenu();
+        }
 
     }
 }
